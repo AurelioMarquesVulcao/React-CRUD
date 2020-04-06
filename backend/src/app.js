@@ -1,15 +1,16 @@
 const express = require("express");
-//const morgan = require("morgan");
-//const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require('dotenv').config()
 
 const app = express();
 const placesRouter = require("./api/routes/places");
 
 // banco de dados utilizado
 mongoose.connect(
-  "mongodb+srv://admin:1234@cluster0-9jhwf.mongodb.net/covid-19?retryWrites=true&w=majority",
+  process.env.ACCESS_DB_ANY,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
