@@ -51,7 +51,7 @@ router.post("/", (req, res, next) => {
 // Deleta apenas um dado no banco de dados
 router.delete("/:placeId", (req, res, next) => {
   const id = req.params.placeId;
-  Place.updateOne({ _id: new ObjectId(id) })
+  Place.remove({ _id: id })
   .exec()
   .then(result => {
     res.status(200).json(result);
@@ -71,13 +71,32 @@ router.patch("/:placeId", (req, res, next) => {
   })
   .exec()
   .then(result => console.log(result))
-  // está retornando erro mesmo com status 200
   .catch(err => res.status(500).json({ error: err }));
   res.status(200).json({
     message: "Successfully edited"
   });
 });
 
+
+// trabalhando nessa função
+
+// router.put("/:placeId", (req, res, next) => {
+//   const id = req.params.placeId
+//   Place.findOneAndUpdate({
+//     _id: id,
+//     country: req.body.country,
+//     cases: req.body.cases,
+//     death: req.body.death,
+//     date: req.body.date,
+    
+//   },{new: true})
+//   .exec()
+//   .then(result => console.log(result))
+//   .catch(err => res.status(500).json({ error: err }));
+//   res.status(200).json({
+//     message: "Successfully edited"
+//   });
+// });
+
+
 module.exports = router;
-
-
