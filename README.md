@@ -6,3 +6,6 @@
 * Como única ferramenta necessária para desenvolvimento é um editor de texto e o Docker poderá ser usado para acelerar MVP (Produto Mínimo Viável) em qualquer maquina, seja com Linux, Windows, macOS.
 
 <!-- Porque rodar seu código no Docker?? -->
+
+<!-- Material de consulta:
+python flask - https://www.youtube.com/watch?v=GsCCyN3fRoI -->
