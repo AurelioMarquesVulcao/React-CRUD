@@ -9,3 +9,5 @@
 
 <!-- Material de consulta:
 python flask - https://www.youtube.com/watch?v=GsCCyN3fRoI -->
+
+<!-- O poetry esta de acordo com a pep 517 e 518 -->

@@ -3,8 +3,14 @@ from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson import json_util
 from bson.objectid import ObjectId
+from flask_cors import CORS
 
 app = Flask(__name__)
+# tem que pesquisar qual é o metodo correto de inserir o CORS
+cors = CORS(app)
+# tem que pesquisar qual é o metodo correto de inserir o CORS
+CORS(app)
+
 app.config['MONGO_URI'] = "mongodb+srv://Aurelioprod:U0PWxXrhk4KmFpp4@vulcaotech-pdii4.mongodb.net/Generic?retryWrites=true&w=majority"
 
 mongo = PyMongo(app)
@@ -82,7 +88,8 @@ def update_user(id):
                 'name2': name2,
                 'password': hashed_password
             }})
-        response = jsonify({"message": "User " + id + " was Update successfully"})
+        response = jsonify(
+            {"message": "User " + id + " was Update successfully"})
         return response
 
 
@@ -99,4 +106,4 @@ def not_found(error=None):
 
 if __name__ == "__main__":
     # para produção desativar debug=True
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)

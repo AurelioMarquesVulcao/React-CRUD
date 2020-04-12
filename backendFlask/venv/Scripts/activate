@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='C:\Users\Vulcao\Documents\GitHub\React-CRUD\backendFlask\venv'
+VIRTUAL_ENV='C:\Users\Vulcao\Documents\GitHub\React-CRUD\backendflask\venv'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

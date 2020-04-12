@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\Vulcao\Documents\GitHub\React-CRUD\backendFlask\venv"
+set "VIRTUAL_ENV=C:\Users\Vulcao\Documents\GitHub\React-CRUD\backendflask\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"
