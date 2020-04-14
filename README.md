@@ -1,4 +1,4 @@
-# CRUD simplificado
+# Super Tools for dummies.
 
 ## O objetivo é possuir um serviço que rode em qualquer máquina apenas instalando Docker
 

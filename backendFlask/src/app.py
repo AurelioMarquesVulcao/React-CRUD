@@ -9,7 +9,7 @@ app = Flask(__name__)
 # tem que pesquisar qual é o metodo correto de inserir o CORS
 cors = CORS(app)
 # tem que pesquisar qual é o metodo correto de inserir o CORS
-CORS(app)
+# CORS(app)
 
 app.config['MONGO_URI'] = "mongodb+srv://Aurelioprod:U0PWxXrhk4KmFpp4@vulcaotech-pdii4.mongodb.net/Generic?retryWrites=true&w=majority"
 
@@ -20,24 +20,25 @@ mongo = PyMongo(app)
 #     return "hello"
 
 # metodo de envio de dados.
-@app.route('/', methods=['POST'])
+@app.route('/products', methods=['POST'])
 def create_user():
     # print(request.json)
-    name = request.json['name']
-    name2 = request.json['name2']
-    password = request.json['password']
+    description = request.json['description']
+    price = request.json['price']
+    quantity = request.json['quantity']
+    # password = request.json['password']
 
-    if name and name2 and password:
-        hashed_password = generate_password_hash(password)
+    if description and price and quantity:
+        # hashed_password = generate_password_hash(password)
         # db.anydatas - anygatas é a minha base de dados
         id = mongo.db.anydatas.insert(
-            {'name': name, 'name2': name2, 'password': hashed_password}
+            {'description': description, 'price': price, 'quantity': quantity}
         )
         response = {
             'id': str(id),
-            'name': name,
-            'name2': name2,
-            'password': hashed_password
+            'description': description,
+            'price': price,
+            'quantity': quantity
 
         }
         return response
@@ -48,7 +49,7 @@ def create_user():
 
 
 # metodo de recebimento de dados
-@app.route('/', methods=['GET'])
+@app.route('/products', methods=['GET'])
 def get_users():
     # a variavél que armazena pode ser qualquer nome que se encaixe na sua aplicação
     any_data = mongo.db.anydatas.find()
@@ -58,35 +59,35 @@ def get_users():
     return Response(response, mimetype='application/json')
 
 # assim funciona normalmente
-@app.route('/<id>', methods=['GET'])
+@app.route('/products/<id>', methods=['GET'])
 def get_user(id):
     any_data = mongo.db.anydatas.find_one({'_id': ObjectId(id)})
     response = json_util.dumps(any_data)
     return Response(response, mimetype='application/json')
 
 
-@app.route('/<id>', methods=['DELETE'])
+@app.route('/products/<id>', methods=['DELETE'])
 def delete_user(id):
     mongo.db.anydatas.delete_one({'_id': ObjectId(id)})
     response = jsonify({"message": "User " + id + " was Deleted successfully"})
     return response
 
 
-@app.route('/<id>', methods=['PUT'])
+@app.route('/products/<id>', methods=['PUT'])
 def update_user(id):
-    name = request.json['name']
-    name2 = request.json['name2']
-    password = request.json['password']
+    description = request.json['description']
+    price = request.json['price']
+    quantity = request.json['quantity']
 
-    if name and name2 and password:
-        hashed_password = generate_password_hash(password)
+    if description and price and quantity:
+        # hashed_password = generate_password_hash(password)
         # db.anydatas - anygatas é a minha base de dados
         mongo.db.anydatas.update_one(
             {'_id': ObjectId(id)},
             {'$set': {
-                'name': name,
-                'name2': name2,
-                'password': hashed_password
+                'description': description,
+                'price': price,
+                'quantity': quantity
             }})
         response = jsonify(
             {"message": "User " + id + " was Update successfully"})
