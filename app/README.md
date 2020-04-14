@@ -1,11 +1,15 @@
 # Frontend
 
-* Na pasta backend estão a api crud com banco de dados. Ela roda com os comados:
+<p> Novos comentários aqui.
 
-    <ol> docker-compose up -d   --> Sobe a aplicação</ol>
-    <ol> docker-compose down   --> Desliga a aplicação</ol>
-    <ol> docker-compose logs -f  --> Exibe os logs da aplicação</ol>
+# Backend
+#### Na pasta backend estão a api crud com banco de dados. Ela roda com os comados:
 
+* docker-compose up -d   --> Sobe a aplicação
+* docker-compose down   --> Desliga a aplicação
+* docker-compose logs -f  --> Exibe os logs da aplicação
+
+## Será implementado para front e back serem levantados e regido por apenas um arquivo **Doker.yml**
 
 
 
