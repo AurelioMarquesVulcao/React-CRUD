@@ -10,7 +10,7 @@ app = Flask(__name__)
 # tem que pesquisar qual é o metodo correto de inserir o CORS
 cors = CORS(app)    # esse está funcionado parcialmente travou no meu put.
 # tem que pesquisar qual é o metodo correto de inserir o CORS
-# CORS(app)
+CORS(app)
 
 # inserir o uso de arquivo .env para proteger as variavéis
 app.config['MONGO_URI'] = "mongodb+srv://Aurelioprod:U0PWxXrhk4KmFpp4@vulcaotech-pdii4.mongodb.net/Generic?retryWrites=true&w=majority"
