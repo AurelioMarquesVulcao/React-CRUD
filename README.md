@@ -2,7 +2,7 @@
 
 ## O objetivo é possuir um serviço que rode em qualquer máquina apenas instalando Docker
 
-* **Porque Docker?** Ambiente de produção e desenvolvimentos iguais e a facilidade de qualquer usuário e em qualquer ambiente poder rodar as aplicações. Menos poluição na máquina local com dependências conflitantes e no ambiente de produção também, pois cada container isola as dependências e aplicações. Como única ferramenta necessária para desenvolvimento é um editor de texto e o Docker, <b> Super Tools for Dummies</b> poderá ser usado para acelerar o seu **MVP** (Produto Mínimo Viável).
+* **Porque Docker?** Ambiente de produção e desenvolvimentos iguais e a facilidade de qualquer usuário e em qualquer ambiente poder rodar as aplicações. Menos poluição na máquina local com dependências conflitantes e no ambiente de produção também, pois cada container isola as dependências e aplicações. Como única ferramenta necessária para desenvolvimento é um editor de texto e o Docker, <b> Super Tools for Dummies</b> poderá ser usado para acelerar o seu **MVP** (Produto Mínimo Viável). Podemos tratar conflitos de portas locais (express e React usam a mesma porta 3000), sem alterar os arquivos do código alterando apenas o arquivo **.env**.
 
 * Os serviços criados com essas ferramentas podem ser integrados nos serviços AWS (ou qualquer serviço como Heroku entre outros), provendo deploy automático da aplicação usando Git.
 
