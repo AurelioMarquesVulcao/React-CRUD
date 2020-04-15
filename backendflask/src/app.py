@@ -7,38 +7,34 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 # tem que pesquisar qual é o metodo correto de inserir o CORS
-cors = CORS(app)
+cors = CORS(app)     # esse está funcionado parcialmente travou no meu put.
 # tem que pesquisar qual é o metodo correto de inserir o CORS
-# CORS(app)
+CORS(app)
 
+# inserir o uso de arquivo .env para proteger as variavéis
 app.config['MONGO_URI'] = "mongodb+srv://Aurelioprod:U0PWxXrhk4KmFpp4@vulcaotech-pdii4.mongodb.net/Generic?retryWrites=true&w=majority"
 
 mongo = PyMongo(app)
 
-# @app.route('/')
-# def hello():
-#     return "hello"
 
 # metodo de envio de dados.
-@app.route('/products', methods=['POST'])
+@app.route('/', methods=['POST'])
 def create_user():
-    # print(request.json)
-    description = request.json['description']
-    price = request.json['price']
-    quantity = request.json['quantity']
-    # password = request.json['password']
+    name = request.json['name']
+    name2 = request.json['name2']
+    password = request.json['password']
 
-    if description and price and quantity:
-        # hashed_password = generate_password_hash(password)
-        # db.anydatas - anygatas é a minha base de dados
+    if name and name2 and password:
+        hashed_password = generate_password_hash(password)
+        # db.anydatas - anydatas é a minha base de dados
         id = mongo.db.anydatas.insert(
-            {'description': description, 'price': price, 'quantity': quantity}
+            {'name': name, 'name2': name2, 'password': hashed_password}
         )
         response = {
             'id': str(id),
-            'description': description,
-            'price': price,
-            'quantity': quantity
+            'name': name,
+            'name2': name2,
+            'password': hashed_password
 
         }
         return response
@@ -49,7 +45,7 @@ def create_user():
 
 
 # metodo de recebimento de dados
-@app.route('/products', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_users():
     # a variavél que armazena pode ser qualquer nome que se encaixe na sua aplicação
     any_data = mongo.db.anydatas.find()
@@ -59,35 +55,35 @@ def get_users():
     return Response(response, mimetype='application/json')
 
 # assim funciona normalmente
-@app.route('/products/<id>', methods=['GET'])
+@app.route('/<id>', methods=['GET'])
 def get_user(id):
     any_data = mongo.db.anydatas.find_one({'_id': ObjectId(id)})
     response = json_util.dumps(any_data)
     return Response(response, mimetype='application/json')
 
 
-@app.route('/products/<id>', methods=['DELETE'])
+@app.route('/<id>', methods=['DELETE'])
 def delete_user(id):
     mongo.db.anydatas.delete_one({'_id': ObjectId(id)})
     response = jsonify({"message": "User " + id + " was Deleted successfully"})
     return response
 
 
-@app.route('/products/<id>', methods=['PUT'])
+@app.route('/<id>', methods=['PUT'])
 def update_user(id):
-    description = request.json['description']
-    price = request.json['price']
-    quantity = request.json['quantity']
+    name = request.json['name']
+    name2 = request.json['name2']
+    password = request.json['password']
 
-    if description and price and quantity:
-        # hashed_password = generate_password_hash(password)
-        # db.anydatas - anygatas é a minha base de dados
+    if name and name2 and password:
+        hashed_password = generate_password_hash(password)
+        # db.anydatas - anydatas é a minha base de dados
         mongo.db.anydatas.update_one(
             {'_id': ObjectId(id)},
             {'$set': {
-                'description': description,
-                'price': price,
-                'quantity': quantity
+                'name': name,
+                'name2': name2,
+                'password': hashed_password
             }})
         response = jsonify(
             {"message": "User " + id + " was Update successfully"})
@@ -108,3 +104,8 @@ def not_found(error=None):
 if __name__ == "__main__":
     # para produção desativar debug=True
     app.run(host='0.0.0.0', debug=True)
+
+# estrutura genérica de criação de rotas caso necessario criar novas.
+# @app.route('/')
+# def hello():
+#     return "hello"
