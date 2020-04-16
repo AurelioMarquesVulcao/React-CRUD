@@ -7,7 +7,7 @@ services:
     env_file:
      - .env
     ports:
-       - ${SERVER_PORT}:${SERVER_PORT}
+       - ${SERVER_PORT_DC}:${SERVER_PORT_DC}
     volumes:
       - .:/src
     working_dir: /src

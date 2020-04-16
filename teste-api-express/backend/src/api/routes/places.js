@@ -13,7 +13,7 @@ router.get("/", (req, res, next) => {
 });
 
 // Exibe um indice pelo id.
-router.get("/:placeId", (req, res, next) => {
+router.get("/:userId", (req, res, next) => {
   const id = req.params.placeId;
   Place.findById(id)
     .exec()
@@ -34,9 +34,9 @@ router.post("/", (req, res, next) => {
   const place = new Place({
     // _id: new mongoose.Types.ObjectId(),
     // country: req.body.country,
-    description: req.body.description,
-    price: req.body.price,
-    quantity: req.body.quantity
+    name: req.body.name,
+    email: req.body.email,
+    // quantity: req.body.quantity
   });
   place
     .save()
@@ -49,7 +49,7 @@ router.post("/", (req, res, next) => {
 });
 
 // Deleta apenas um dado no banco de dados
-router.delete("/:placeId", (req, res, next) => {
+router.delete("/:userId", (req, res, next) => {
   const id = req.params.placeId;
   Place.remove({ _id: id })
   .exec()
@@ -60,14 +60,14 @@ router.delete("/:placeId", (req, res, next) => {
 });
 
 // vai atualizar um registro
-router.patch("/:placeId", (req, res, next) => {
+router.patch("/:userId", (req, res, next) => {
   const id = req.params.placeId
   Place.updateOne({
     _id: id,
     // country: req.body.country,
-    description: req.body.description,
-    price: req.body.price,
-    quantity: req.body.quantity
+    name: req.body.name,
+    email: req.body.email,
+    // quantity: req.body.quantity
   })
   .exec()
   .then(result => console.log(result))

@@ -2,13 +2,10 @@ const mongoose = require("mongoose");
 
 
 const placesSchema = mongoose.Schema({
-  description: {
+  name: {
     type: String
   },
-  price: {
-    type: String
-  },
-  quantity: {
+  email: {
     type: String
   }
 });
