@@ -1,0 +1,31 @@
+flask
+flask_pymongo
+dnspython
+flask-cors
+
+COMAMDOS poetry
+
+poetry export -f requirements.txt -o requirements.txt
+poetry add 'dependencia'
+
+COMANDOS flask
+INICIA O SERVIDOR
+py src/app.py
+
+
+
+
+
+bcrypt
+dnspython
+pip install -U flask-cors
+werkzeug
+bson
+
+cria minha virtual machine
+poetry env
+virtualenv venv
+
+
+
+.\venv\Scripts\activate
